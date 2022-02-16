@@ -47,18 +47,19 @@ namespace SalesMGS
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.pbPhoto = new System.Windows.Forms.PictureBox();
             this.btnSelectPhoto = new System.Windows.Forms.Button();
             this.btnRemovePhoto = new System.Windows.Forms.Button();
-            this.btnCreate = new System.Windows.Forms.Button();
+            this.btnAddNew = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnRestore = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dgvProduct = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).BeginInit();
+            this.ofdPhoto = new System.Windows.Forms.OpenFileDialog();
+            this.pbProductImage = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbProductImage)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -101,6 +102,7 @@ namespace SalesMGS
             // 
             // txtProductID
             // 
+            this.txtProductID.Enabled = false;
             this.txtProductID.Location = new System.Drawing.Point(129, 23);
             this.txtProductID.Name = "txtProductID";
             this.txtProductID.Size = new System.Drawing.Size(175, 20);
@@ -217,14 +219,6 @@ namespace SalesMGS
             this.label9.TabIndex = 20;
             this.label9.Text = "Unit Price Out";
             // 
-            // pbPhoto
-            // 
-            this.pbPhoto.Location = new System.Drawing.Point(895, 23);
-            this.pbPhoto.Name = "pbPhoto";
-            this.pbPhoto.Size = new System.Drawing.Size(192, 96);
-            this.pbPhoto.TabIndex = 21;
-            this.pbPhoto.TabStop = false;
-            // 
             // btnSelectPhoto
             // 
             this.btnSelectPhoto.Location = new System.Drawing.Point(895, 125);
@@ -233,6 +227,7 @@ namespace SalesMGS
             this.btnSelectPhoto.TabIndex = 22;
             this.btnSelectPhoto.Text = "Select Photo";
             this.btnSelectPhoto.UseVisualStyleBackColor = true;
+            this.btnSelectPhoto.Click += new System.EventHandler(this.btnSelectPhoto_Click);
             // 
             // btnRemovePhoto
             // 
@@ -242,15 +237,17 @@ namespace SalesMGS
             this.btnRemovePhoto.TabIndex = 23;
             this.btnRemovePhoto.Text = "Remove Photo";
             this.btnRemovePhoto.UseVisualStyleBackColor = true;
+            this.btnRemovePhoto.Click += new System.EventHandler(this.btnRemovePhoto_Click);
             // 
-            // btnCreate
+            // btnAddNew
             // 
-            this.btnCreate.Location = new System.Drawing.Point(1117, 19);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(91, 32);
-            this.btnCreate.TabIndex = 24;
-            this.btnCreate.Text = "Create";
-            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnAddNew.Location = new System.Drawing.Point(1117, 19);
+            this.btnAddNew.Name = "btnAddNew";
+            this.btnAddNew.Size = new System.Drawing.Size(91, 32);
+            this.btnAddNew.TabIndex = 24;
+            this.btnAddNew.Text = "Add New";
+            this.btnAddNew.UseVisualStyleBackColor = true;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
             // btnUpdate
             // 
@@ -260,6 +257,7 @@ namespace SalesMGS
             this.btnUpdate.TabIndex = 25;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
@@ -269,6 +267,7 @@ namespace SalesMGS
             this.btnDelete.TabIndex = 26;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnRestore
             // 
@@ -278,6 +277,7 @@ namespace SalesMGS
             this.btnRestore.TabIndex = 27;
             this.btnRestore.Text = "Restore";
             this.btnRestore.UseVisualStyleBackColor = true;
+            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
             // label10
             // 
@@ -294,16 +294,38 @@ namespace SalesMGS
             this.txtSearch.Location = new System.Drawing.Point(107, 191);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(525, 28);
+            this.txtSearch.Size = new System.Drawing.Size(534, 28);
             this.txtSearch.TabIndex = 29;
             // 
             // dgvProduct
             // 
+            this.dgvProduct.AllowUserToAddRows = false;
+            this.dgvProduct.AllowUserToDeleteRows = false;
+            this.dgvProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProduct.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProduct.Location = new System.Drawing.Point(16, 225);
             this.dgvProduct.Name = "dgvProduct";
+            this.dgvProduct.ReadOnly = true;
             this.dgvProduct.Size = new System.Drawing.Size(1192, 346);
             this.dgvProduct.TabIndex = 30;
+            this.dgvProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellClick);
+            // 
+            // ofdPhoto
+            // 
+            this.ofdPhoto.FileName = "openFileDialog1";
+            // 
+            // pbProductImage
+            // 
+            this.pbProductImage.BackColor = System.Drawing.Color.White;
+            this.pbProductImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbProductImage.Image = global::SalesMGS.Properties.Resources.product_default;
+            this.pbProductImage.Location = new System.Drawing.Point(895, 23);
+            this.pbProductImage.Name = "pbProductImage";
+            this.pbProductImage.Size = new System.Drawing.Size(192, 96);
+            this.pbProductImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbProductImage.TabIndex = 21;
+            this.pbProductImage.TabStop = false;
             // 
             // ProductForm
             // 
@@ -316,10 +338,10 @@ namespace SalesMGS
             this.Controls.Add(this.btnRestore);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.btnCreate);
+            this.Controls.Add(this.btnAddNew);
             this.Controls.Add(this.btnRemovePhoto);
             this.Controls.Add(this.btnSelectPhoto);
-            this.Controls.Add(this.pbPhoto);
+            this.Controls.Add(this.pbProductImage);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -341,8 +363,9 @@ namespace SalesMGS
             this.Name = "ProductForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "PRODUCT";
-            ((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).EndInit();
+            this.Load += new System.EventHandler(this.ProductForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbProductImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -368,15 +391,16 @@ namespace SalesMGS
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.PictureBox pbPhoto;
+        private System.Windows.Forms.PictureBox pbProductImage;
         private System.Windows.Forms.Button btnSelectPhoto;
         private System.Windows.Forms.Button btnRemovePhoto;
-        private System.Windows.Forms.Button btnCreate;
+        private System.Windows.Forms.Button btnAddNew;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnRestore;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView dgvProduct;
+        private System.Windows.Forms.OpenFileDialog ofdPhoto;
     }
 }

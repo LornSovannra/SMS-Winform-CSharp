@@ -32,9 +32,18 @@ namespace SalesMGS
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.ctsmiCategory = new System.Windows.Forms.ToolStripMenuItem();
+            this.employeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.supplierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ptsmiProduct = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctsmiCategory = new System.Windows.Forms.ToolStripMenuItem();
+            this.salesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.membersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.purchaesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -45,15 +54,6 @@ namespace SalesMGS
             this.tsslDate = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.employeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.supplierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.membersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.purchaesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -78,14 +78,38 @@ namespace SalesMGS
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // ctsmiCategory
+            // employeeToolStripMenuItem
             // 
-            this.ctsmiCategory.Image = ((System.Drawing.Image)(resources.GetObject("ctsmiCategory.Image")));
-            this.ctsmiCategory.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.ctsmiCategory.Name = "ctsmiCategory";
-            this.ctsmiCategory.Size = new System.Drawing.Size(123, 52);
-            this.ctsmiCategory.Text = "Categories";
-            this.ctsmiCategory.Click += new System.EventHandler(this.ctsmiCategory_Click);
+            this.employeeToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("employeeToolStripMenuItem.Image")));
+            this.employeeToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.employeeToolStripMenuItem.Name = "employeeToolStripMenuItem";
+            this.employeeToolStripMenuItem.Size = new System.Drawing.Size(124, 52);
+            this.employeeToolStripMenuItem.Text = "Employees";
+            // 
+            // supplierToolStripMenuItem
+            // 
+            this.supplierToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("supplierToolStripMenuItem.Image")));
+            this.supplierToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.supplierToolStripMenuItem.Name = "supplierToolStripMenuItem";
+            this.supplierToolStripMenuItem.Size = new System.Drawing.Size(115, 52);
+            this.supplierToolStripMenuItem.Text = "Suppliers";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem2.Image")));
+            this.toolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(114, 52);
+            this.toolStripMenuItem2.Text = "Products";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.ptsmiProduct_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
+            this.toolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(115, 52);
+            this.toolStripMenuItem1.Text = "Suppliers";
             // 
             // ptsmiProduct
             // 
@@ -95,6 +119,47 @@ namespace SalesMGS
             this.ptsmiProduct.Size = new System.Drawing.Size(114, 52);
             this.ptsmiProduct.Text = "Products";
             this.ptsmiProduct.Click += new System.EventHandler(this.ptsmiProduct_Click);
+            // 
+            // ctsmiCategory
+            // 
+            this.ctsmiCategory.Image = ((System.Drawing.Image)(resources.GetObject("ctsmiCategory.Image")));
+            this.ctsmiCategory.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.ctsmiCategory.Name = "ctsmiCategory";
+            this.ctsmiCategory.Size = new System.Drawing.Size(123, 52);
+            this.ctsmiCategory.Text = "Categories";
+            this.ctsmiCategory.Click += new System.EventHandler(this.ctsmiCategory_Click);
+            // 
+            // salesToolStripMenuItem
+            // 
+            this.salesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("salesToolStripMenuItem.Image")));
+            this.salesToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.salesToolStripMenuItem.Name = "salesToolStripMenuItem";
+            this.salesToolStripMenuItem.Size = new System.Drawing.Size(93, 52);
+            this.salesToolStripMenuItem.Text = "Sales";
+            // 
+            // customersToolStripMenuItem
+            // 
+            this.customersToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("customersToolStripMenuItem.Image")));
+            this.customersToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.customersToolStripMenuItem.Name = "customersToolStripMenuItem";
+            this.customersToolStripMenuItem.Size = new System.Drawing.Size(124, 52);
+            this.customersToolStripMenuItem.Text = "Customers";
+            // 
+            // membersToolStripMenuItem
+            // 
+            this.membersToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("membersToolStripMenuItem.Image")));
+            this.membersToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.membersToolStripMenuItem.Name = "membersToolStripMenuItem";
+            this.membersToolStripMenuItem.Size = new System.Drawing.Size(117, 52);
+            this.membersToolStripMenuItem.Text = "Members";
+            // 
+            // purchaesToolStripMenuItem
+            // 
+            this.purchaesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("purchaesToolStripMenuItem.Image")));
+            this.purchaesToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.purchaesToolStripMenuItem.Name = "purchaesToolStripMenuItem";
+            this.purchaesToolStripMenuItem.Size = new System.Drawing.Size(120, 52);
+            this.purchaesToolStripMenuItem.Text = "Purchases";
             // 
             // moreToolStripMenuItem
             // 
@@ -108,12 +173,20 @@ namespace SalesMGS
             this.moreToolStripMenuItem.Size = new System.Drawing.Size(95, 52);
             this.moreToolStripMenuItem.Text = "More";
             // 
+            // reportToolStripMenuItem
+            // 
+            this.reportToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reportToolStripMenuItem.Image")));
+            this.reportToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
+            this.reportToolStripMenuItem.Size = new System.Drawing.Size(200, 54);
+            this.reportToolStripMenuItem.Text = "Reports";
+            // 
             // changePasswordToolStripMenuItem
             // 
             this.changePasswordToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("changePasswordToolStripMenuItem.Image")));
             this.changePasswordToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(212, 54);
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(200, 54);
             this.changePasswordToolStripMenuItem.Text = "Change Password";
             // 
             // logoutToolStripMenuItem
@@ -121,7 +194,7 @@ namespace SalesMGS
             this.logoutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("logoutToolStripMenuItem.Image")));
             this.logoutToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(212, 54);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(200, 54);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
@@ -187,79 +260,6 @@ namespace SalesMGS
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // employeeToolStripMenuItem
-            // 
-            this.employeeToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("employeeToolStripMenuItem.Image")));
-            this.employeeToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.employeeToolStripMenuItem.Name = "employeeToolStripMenuItem";
-            this.employeeToolStripMenuItem.Size = new System.Drawing.Size(124, 52);
-            this.employeeToolStripMenuItem.Text = "Employees";
-            // 
-            // supplierToolStripMenuItem
-            // 
-            this.supplierToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("supplierToolStripMenuItem.Image")));
-            this.supplierToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.supplierToolStripMenuItem.Name = "supplierToolStripMenuItem";
-            this.supplierToolStripMenuItem.Size = new System.Drawing.Size(115, 52);
-            this.supplierToolStripMenuItem.Text = "Suppliers";
-            // 
-            // salesToolStripMenuItem
-            // 
-            this.salesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("salesToolStripMenuItem.Image")));
-            this.salesToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.salesToolStripMenuItem.Name = "salesToolStripMenuItem";
-            this.salesToolStripMenuItem.Size = new System.Drawing.Size(93, 52);
-            this.salesToolStripMenuItem.Text = "Sales";
-            // 
-            // customersToolStripMenuItem
-            // 
-            this.customersToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("customersToolStripMenuItem.Image")));
-            this.customersToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.customersToolStripMenuItem.Name = "customersToolStripMenuItem";
-            this.customersToolStripMenuItem.Size = new System.Drawing.Size(124, 52);
-            this.customersToolStripMenuItem.Text = "Customers";
-            // 
-            // membersToolStripMenuItem
-            // 
-            this.membersToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("membersToolStripMenuItem.Image")));
-            this.membersToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.membersToolStripMenuItem.Name = "membersToolStripMenuItem";
-            this.membersToolStripMenuItem.Size = new System.Drawing.Size(117, 52);
-            this.membersToolStripMenuItem.Text = "Members";
-            // 
-            // purchaesToolStripMenuItem
-            // 
-            this.purchaesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("purchaesToolStripMenuItem.Image")));
-            this.purchaesToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.purchaesToolStripMenuItem.Name = "purchaesToolStripMenuItem";
-            this.purchaesToolStripMenuItem.Size = new System.Drawing.Size(120, 52);
-            this.purchaesToolStripMenuItem.Text = "Purchases";
-            // 
-            // reportToolStripMenuItem
-            // 
-            this.reportToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reportToolStripMenuItem.Image")));
-            this.reportToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
-            this.reportToolStripMenuItem.Size = new System.Drawing.Size(212, 54);
-            this.reportToolStripMenuItem.Text = "Reports";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
-            this.toolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(115, 52);
-            this.toolStripMenuItem1.Text = "Suppliers";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem2.Image")));
-            this.toolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(114, 52);
-            this.toolStripMenuItem2.Text = "Products";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.ptsmiProduct_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -272,6 +272,7 @@ namespace SalesMGS
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sale Management System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
