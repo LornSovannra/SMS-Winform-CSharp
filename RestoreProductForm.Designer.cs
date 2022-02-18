@@ -85,6 +85,7 @@ namespace SalesMGS
             this.dgvRetoreProduct.Location = new System.Drawing.Point(16, 89);
             this.dgvRetoreProduct.Name = "dgvRetoreProduct";
             this.dgvRetoreProduct.ReadOnly = true;
+            this.dgvRetoreProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRetoreProduct.Size = new System.Drawing.Size(1196, 482);
             this.dgvRetoreProduct.TabIndex = 34;
             this.dgvRetoreProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellClick);

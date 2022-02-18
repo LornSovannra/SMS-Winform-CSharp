@@ -44,6 +44,9 @@ namespace SalesMGS
             dgvRetoreProduct.RowTemplate.Height = 80;
             imgcolumn = (DataGridViewImageColumn)dgvRetoreProduct.Columns[9];
             imgcolumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+
+            //Invisible column isDeleted
+            dgvRetoreProduct.Columns[10].Visible = false;
         }
 
         string ProductID;

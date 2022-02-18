@@ -59,6 +59,7 @@ namespace SalesMGS
             // 
             // txtPassword
             // 
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(134, 170);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
@@ -89,6 +90,7 @@ namespace SalesMGS
             // 
             // txtUsername
             // 
+            this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername.Location = new System.Drawing.Point(134, 116);
             this.txtUsername.Multiline = true;
             this.txtUsername.Name = "txtUsername";

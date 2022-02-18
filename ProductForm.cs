@@ -16,6 +16,7 @@ namespace SalesMGS
     public partial class ProductForm : Form
     {
         OracleConnection conn;
+        string CategoryID;
 
         public ProductForm()
         {
@@ -26,6 +27,7 @@ namespace SalesMGS
         {
             conn = DBConnection.Connect();
             LoadData(0);
+            ComboBoxShowCategory();
         }
 
         void LoadData(int isDeleted)
@@ -47,6 +49,46 @@ namespace SalesMGS
             dgvProduct.RowTemplate.Height = 80;
             imgcolumn = (DataGridViewImageColumn)dgvProduct.Columns[9];
             imgcolumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+
+            //Invisible column isDeleted
+            dgvProduct.Columns[10].Visible = false;
+        }
+
+        public void ComboBoxShowCategory()
+        {
+            OracleCommand select_cmd = new OracleCommand("SelectCategory", conn);
+            select_cmd.CommandType = CommandType.StoredProcedure;
+            OracleDataAdapter adapt = new OracleDataAdapter(select_cmd);
+
+            string select_sql = "SELECT CategoryID, CategoryName FROM tblCategories";
+            OracleCommand cmd = new OracleCommand(select_sql, conn);
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                cbCategoryID.Items.Add(dr["CategoryName"].ToString());
+                cbCategoryID.DisplayMember = (dr["CategoryName"].ToString());
+                cbCategoryID.ValueMember = (dr["CategoryID"].ToString());
+            }
+        }
+
+        private void cbCategoryID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string select_sql = "SELECT CategoryID FROM tblCategories WHERE CategoryName = '" + cbCategoryID.SelectedItem + "'";
+                OracleCommand select_cmd = new OracleCommand(select_sql, conn);
+                OracleDataReader dr = select_cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    CategoryID = dr[0].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
 
         private void OpenForm(Form form, string title)
@@ -81,22 +123,24 @@ namespace SalesMGS
                 }
                 else if (btnAddNew.Text == "Save")
                 {
-                    OracleCommand cmd_insert = new OracleCommand("InsertProduct", conn);
-                    cmd_insert.CommandType = CommandType.StoredProcedure;
-                    cmd_insert.Parameters.Add(new OracleParameter("vProductName", txtProductName.Text));
-                    cmd_insert.Parameters.Add(new OracleParameter("vDescription", rtbDescription.Text));
-                    cmd_insert.Parameters.Add(new OracleParameter("vCategoryID", Int32.Parse("1")));
-                    cmd_insert.Parameters.Add(new OracleParameter("vBarcode", txtBarcode.Text));
-                    cmd_insert.Parameters.Add(new OracleParameter("vExpireDate", dtpExpireDate.Value));
-                    cmd_insert.Parameters.Add(new OracleParameter("vQty", Int32.Parse(txtQty.Text)));
-                    cmd_insert.Parameters.Add(new OracleParameter("vUnitPriceIn", Decimal.Parse(txtUnitPriceIn.Text)));
-                    cmd_insert.Parameters.Add(new OracleParameter("vUnitPriceOut", Decimal.Parse(txtUnitPriceOut.Text)));
-
                     MemoryStream ms = new MemoryStream();
                     pbProductImage.Image.Save(ms, pbProductImage.Image.RawFormat);
-                    cmd_insert.Parameters.Add(new OracleParameter("vProductImage", ms.ToArray()));
 
-                    if (cmd_insert.ExecuteNonQuery() == -1)
+                    string insert_sql = "INSERT INTO tblProducts(ProductName, Description, CategoryID, Barcode, ExpireDate, Qty, UnitPriceIn, UnitPriceOut, ProductImage, IsDeleted)" +
+                                        "VALUES(:1, :2, :3, :4, :5, :6, :7, :8, :9, :10)";
+                    OracleCommand cmd_insert = new OracleCommand(insert_sql, conn);
+                    cmd_insert.Parameters.Add(new OracleParameter("1", txtProductName.Text));
+                    cmd_insert.Parameters.Add(new OracleParameter("2", rtbDescription.Text));
+                    cmd_insert.Parameters.Add(new OracleParameter("3", Int32.Parse(CategoryID)));
+                    cmd_insert.Parameters.Add(new OracleParameter("4", txtBarcode.Text));
+                    cmd_insert.Parameters.Add(new OracleParameter("5", dtpExpireDate.Value));
+                    cmd_insert.Parameters.Add(new OracleParameter("6", Int32.Parse(txtQty.Text)));
+                    cmd_insert.Parameters.Add(new OracleParameter("7", Decimal.Parse(txtUnitPriceIn.Text)));
+                    cmd_insert.Parameters.Add(new OracleParameter("8", Decimal.Parse(txtUnitPriceOut.Text)));
+                    cmd_insert.Parameters.Add(new OracleParameter("9", ms.ToArray()));
+                    cmd_insert.Parameters.Add(new OracleParameter("10", Int32.Parse("0")));
+
+                    if (cmd_insert.ExecuteNonQuery() > 0)
                     {
                         btnAddNew.Text = "Add New";
                         btnUpdate.Enabled = true;
@@ -122,26 +166,27 @@ namespace SalesMGS
         {
             try
             {
-                if (MessageBox.Show("Are you sure to delete, " + txtProductName.Text + "?", "DELETE", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure to update, " + txtProductName.Text + "?", "UPDATE", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    OracleCommand update_cmd = new OracleCommand("UpdateProduct", conn);
-                    update_cmd.CommandType = CommandType.StoredProcedure;
-                    update_cmd.Parameters.Add("vProductName", txtProductName.Text);
-                    update_cmd.Parameters.Add("vDescription", rtbDescription.Text);
-                    update_cmd.Parameters.Add("vCategoryID", 2);
-                    update_cmd.Parameters.Add("vBarcode", txtBarcode.Text);
-                    update_cmd.Parameters.Add("vExpireDate", dtpExpireDate.Value);
-                    update_cmd.Parameters.Add("vQty", Int32.Parse(txtQty.Text));
-                    update_cmd.Parameters.Add("vUnitPriceIn", Decimal.Parse(txtUnitPriceIn.Text));
-                    update_cmd.Parameters.Add("vUnitPriceOut", Decimal.Parse(txtUnitPriceOut.Text));
+                    string update_sql = "UPDATE tblProducts SET ProductName = :1, Description = :2, CategoryID = :3, Barcode = :4, ExpireDate = :5, Qty = :6, UnitPriceIn = :7," +
+                                        "UnitPriceOut = :8, ProductImage = :9 WHERE ProductID = :10";
+                    OracleCommand update_cmd = new OracleCommand(update_sql, conn);
+                    update_cmd.Parameters.Add("1", txtProductName.Text);
+                    update_cmd.Parameters.Add("2", rtbDescription.Text);
+                    update_cmd.Parameters.Add("3", Int32.Parse(CategoryID));
+                    update_cmd.Parameters.Add("4", txtBarcode.Text);
+                    update_cmd.Parameters.Add("5", dtpExpireDate.Value);
+                    update_cmd.Parameters.Add("6", Int32.Parse(txtQty.Text));
+                    update_cmd.Parameters.Add("7", Decimal.Parse(txtUnitPriceIn.Text));
+                    update_cmd.Parameters.Add("8", Decimal.Parse(txtUnitPriceOut.Text));
 
                     MemoryStream ms = new MemoryStream();
                     pbProductImage.Image.Save(ms, pbProductImage.Image.RawFormat);
-                    update_cmd.Parameters.Add("vProductImage", OracleDbType.Blob).Value = ms.ToArray();
+                    update_cmd.Parameters.Add("9", OracleDbType.Blob).Value = ms.ToArray();
 
-                    update_cmd.Parameters.Add("vProductID", Int32.Parse(txtProductID.Text));
+                    update_cmd.Parameters.Add("10", Int32.Parse(txtProductID.Text));
 
-                    if(update_cmd.ExecuteNonQuery() == -1)
+                    if(update_cmd.ExecuteNonQuery() > 0)
                     {
                         MessageBox.Show("Record updated", "UPDATED", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadData(0);
@@ -225,7 +270,10 @@ namespace SalesMGS
             txtProductID.Text = dgvProduct.CurrentRow.Cells[0].Value.ToString();
             txtProductName.Text = dgvProduct.CurrentRow.Cells[1].Value.ToString();
             rtbDescription.Text = dgvProduct.CurrentRow.Cells[2].Value.ToString();
+            
+            CategoryID = dgvProduct.CurrentRow.Cells[3].Value.ToString();
             cbCategoryID.Text = dgvProduct.CurrentRow.Cells[3].Value.ToString();
+
             txtBarcode.Text = dgvProduct.CurrentRow.Cells[4].Value.ToString();
             dtpExpireDate.Text = dgvProduct.CurrentRow.Cells[5].Value.ToString();
             txtQty.Text = dgvProduct.CurrentRow.Cells[6].Value.ToString();
@@ -237,5 +285,7 @@ namespace SalesMGS
             MemoryStream ms = new MemoryStream(img);
             pbProductImage.Image = Image.FromStream(ms);
         }
+
+        
     }
 }

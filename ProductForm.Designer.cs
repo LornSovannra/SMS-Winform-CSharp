@@ -58,6 +58,8 @@ namespace SalesMGS
             this.dgvProduct = new System.Windows.Forms.DataGridView();
             this.ofdPhoto = new System.Windows.Forms.OpenFileDialog();
             this.pbProductImage = new System.Windows.Forms.PictureBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbProductImage)).BeginInit();
             this.SuspendLayout();
@@ -94,33 +96,38 @@ namespace SalesMGS
             // 
             // cbCategoryID
             // 
+            this.cbCategoryID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCategoryID.FormattingEnabled = true;
             this.cbCategoryID.Location = new System.Drawing.Point(129, 96);
             this.cbCategoryID.Name = "cbCategoryID";
-            this.cbCategoryID.Size = new System.Drawing.Size(175, 21);
-            this.cbCategoryID.TabIndex = 6;
+            this.cbCategoryID.Size = new System.Drawing.Size(175, 28);
+            this.cbCategoryID.TabIndex = 3;
+            this.cbCategoryID.SelectedIndexChanged += new System.EventHandler(this.cbCategoryID_SelectedIndexChanged);
             // 
             // txtProductID
             // 
             this.txtProductID.Enabled = false;
+            this.txtProductID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProductID.Location = new System.Drawing.Point(129, 23);
             this.txtProductID.Name = "txtProductID";
-            this.txtProductID.Size = new System.Drawing.Size(175, 20);
-            this.txtProductID.TabIndex = 7;
+            this.txtProductID.Size = new System.Drawing.Size(175, 26);
+            this.txtProductID.TabIndex = 1;
             // 
             // txtProductName
             // 
+            this.txtProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProductName.Location = new System.Drawing.Point(129, 59);
             this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(175, 20);
-            this.txtProductName.TabIndex = 8;
+            this.txtProductName.Size = new System.Drawing.Size(175, 26);
+            this.txtProductName.TabIndex = 2;
             // 
             // txtBarcode
             // 
+            this.txtBarcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBarcode.Location = new System.Drawing.Point(129, 132);
             this.txtBarcode.Name = "txtBarcode";
-            this.txtBarcode.Size = new System.Drawing.Size(175, 20);
-            this.txtBarcode.TabIndex = 10;
+            this.txtBarcode.Size = new System.Drawing.Size(175, 26);
+            this.txtBarcode.TabIndex = 4;
             // 
             // label4
             // 
@@ -144,39 +151,45 @@ namespace SalesMGS
             // 
             // dtpExpireDate
             // 
-            this.dtpExpireDate.CustomFormat = "mm-dd-YYYY";
+            this.dtpExpireDate.CustomFormat = "dd-MMM-yy";
+            this.dtpExpireDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpExpireDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpExpireDate.Location = new System.Drawing.Point(441, 23);
             this.dtpExpireDate.Name = "dtpExpireDate";
-            this.dtpExpireDate.Size = new System.Drawing.Size(200, 20);
-            this.dtpExpireDate.TabIndex = 12;
+            this.dtpExpireDate.Size = new System.Drawing.Size(200, 26);
+            this.dtpExpireDate.TabIndex = 5;
             // 
             // txtQty
             // 
+            this.txtQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQty.Location = new System.Drawing.Point(441, 61);
             this.txtQty.Name = "txtQty";
-            this.txtQty.Size = new System.Drawing.Size(200, 20);
-            this.txtQty.TabIndex = 13;
+            this.txtQty.Size = new System.Drawing.Size(200, 26);
+            this.txtQty.TabIndex = 6;
             // 
             // txtUnitPriceIn
             // 
+            this.txtUnitPriceIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUnitPriceIn.Location = new System.Drawing.Point(441, 99);
             this.txtUnitPriceIn.Name = "txtUnitPriceIn";
-            this.txtUnitPriceIn.Size = new System.Drawing.Size(200, 20);
-            this.txtUnitPriceIn.TabIndex = 14;
+            this.txtUnitPriceIn.Size = new System.Drawing.Size(176, 26);
+            this.txtUnitPriceIn.TabIndex = 7;
             // 
             // txtUnitPriceOut
             // 
+            this.txtUnitPriceOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUnitPriceOut.Location = new System.Drawing.Point(441, 134);
             this.txtUnitPriceOut.Name = "txtUnitPriceOut";
-            this.txtUnitPriceOut.Size = new System.Drawing.Size(200, 20);
-            this.txtUnitPriceOut.TabIndex = 15;
+            this.txtUnitPriceOut.Size = new System.Drawing.Size(176, 26);
+            this.txtUnitPriceOut.TabIndex = 8;
             // 
             // rtbDescription
             // 
+            this.rtbDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbDescription.Location = new System.Drawing.Point(668, 47);
             this.rtbDescription.Name = "rtbDescription";
             this.rtbDescription.Size = new System.Drawing.Size(200, 107);
-            this.rtbDescription.TabIndex = 16;
+            this.rtbDescription.TabIndex = 9;
             this.rtbDescription.Text = "";
             // 
             // label6
@@ -224,7 +237,7 @@ namespace SalesMGS
             this.btnSelectPhoto.Location = new System.Drawing.Point(895, 125);
             this.btnSelectPhoto.Name = "btnSelectPhoto";
             this.btnSelectPhoto.Size = new System.Drawing.Size(95, 32);
-            this.btnSelectPhoto.TabIndex = 22;
+            this.btnSelectPhoto.TabIndex = 10;
             this.btnSelectPhoto.Text = "Select Photo";
             this.btnSelectPhoto.UseVisualStyleBackColor = true;
             this.btnSelectPhoto.Click += new System.EventHandler(this.btnSelectPhoto_Click);
@@ -234,7 +247,7 @@ namespace SalesMGS
             this.btnRemovePhoto.Location = new System.Drawing.Point(996, 125);
             this.btnRemovePhoto.Name = "btnRemovePhoto";
             this.btnRemovePhoto.Size = new System.Drawing.Size(91, 32);
-            this.btnRemovePhoto.TabIndex = 23;
+            this.btnRemovePhoto.TabIndex = 11;
             this.btnRemovePhoto.Text = "Remove Photo";
             this.btnRemovePhoto.UseVisualStyleBackColor = true;
             this.btnRemovePhoto.Click += new System.EventHandler(this.btnRemovePhoto_Click);
@@ -244,7 +257,7 @@ namespace SalesMGS
             this.btnAddNew.Location = new System.Drawing.Point(1117, 19);
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(91, 32);
-            this.btnAddNew.TabIndex = 24;
+            this.btnAddNew.TabIndex = 12;
             this.btnAddNew.Text = "Add New";
             this.btnAddNew.UseVisualStyleBackColor = true;
             this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
@@ -254,7 +267,7 @@ namespace SalesMGS
             this.btnUpdate.Location = new System.Drawing.Point(1117, 54);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(91, 32);
-            this.btnUpdate.TabIndex = 25;
+            this.btnUpdate.TabIndex = 13;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -264,7 +277,7 @@ namespace SalesMGS
             this.btnDelete.Location = new System.Drawing.Point(1117, 89);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(91, 32);
-            this.btnDelete.TabIndex = 26;
+            this.btnDelete.TabIndex = 14;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -274,7 +287,7 @@ namespace SalesMGS
             this.btnRestore.Location = new System.Drawing.Point(1117, 125);
             this.btnRestore.Name = "btnRestore";
             this.btnRestore.Size = new System.Drawing.Size(91, 32);
-            this.btnRestore.TabIndex = 27;
+            this.btnRestore.TabIndex = 15;
             this.btnRestore.Text = "Restore";
             this.btnRestore.UseVisualStyleBackColor = true;
             this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
@@ -295,7 +308,7 @@ namespace SalesMGS
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(534, 28);
-            this.txtSearch.TabIndex = 29;
+            this.txtSearch.TabIndex = 16;
             // 
             // dgvProduct
             // 
@@ -307,6 +320,7 @@ namespace SalesMGS
             this.dgvProduct.Location = new System.Drawing.Point(16, 225);
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.ReadOnly = true;
+            this.dgvProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProduct.Size = new System.Drawing.Size(1192, 346);
             this.dgvProduct.TabIndex = 30;
             this.dgvProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellClick);
@@ -327,11 +341,33 @@ namespace SalesMGS
             this.pbProductImage.TabIndex = 21;
             this.pbProductImage.TabStop = false;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(623, 105);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(18, 20);
+            this.label11.TabIndex = 31;
+            this.label11.Text = "$";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(623, 140);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(18, 20);
+            this.label12.TabIndex = 32;
+            this.label12.Text = "$";
+            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1224, 583);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.dgvProduct);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label10);
@@ -402,5 +438,7 @@ namespace SalesMGS
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView dgvProduct;
         private System.Windows.Forms.OpenFileDialog ofdPhoto;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
     }
 }

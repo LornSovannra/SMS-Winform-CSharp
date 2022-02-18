@@ -36,7 +36,6 @@ namespace SalesMGS
             this.supplierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ptsmiProduct = new System.Windows.Forms.ToolStripMenuItem();
             this.ctsmiCategory = new System.Windows.Forms.ToolStripMenuItem();
             this.salesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,7 +64,6 @@ namespace SalesMGS
             this.supplierToolStripMenuItem,
             this.toolStripMenuItem2,
             this.toolStripMenuItem1,
-            this.ptsmiProduct,
             this.ctsmiCategory,
             this.salesToolStripMenuItem,
             this.customersToolStripMenuItem,
@@ -110,15 +108,6 @@ namespace SalesMGS
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(115, 52);
             this.toolStripMenuItem1.Text = "Suppliers";
-            // 
-            // ptsmiProduct
-            // 
-            this.ptsmiProduct.Image = ((System.Drawing.Image)(resources.GetObject("ptsmiProduct.Image")));
-            this.ptsmiProduct.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.ptsmiProduct.Name = "ptsmiProduct";
-            this.ptsmiProduct.Size = new System.Drawing.Size(114, 52);
-            this.ptsmiProduct.Text = "Products";
-            this.ptsmiProduct.Click += new System.EventHandler(this.ptsmiProduct_Click);
             // 
             // ctsmiCategory
             // 
@@ -287,7 +276,6 @@ namespace SalesMGS
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem ctsmiCategory;
-        private System.Windows.Forms.ToolStripMenuItem ptsmiProduct;
         private System.Windows.Forms.ToolStripMenuItem moreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
