@@ -39,6 +39,10 @@ namespace SalesMGS
 
             dgvCategory.DataSource = dt;
             dgvCategory.ClearSelection();
+            dgvCategory.Columns[3].Visible = false;
+            dgvCategory.Columns[4].Visible = false;
+            dgvCategory.Columns[5].Visible = false;
+            dgvCategory.Columns[6].Visible = false;
         }
 
         private void btnAddNew_Click(object sender, EventArgs e)
@@ -55,14 +59,15 @@ namespace SalesMGS
                 }
                 else if (btnAddNew.Text == "Save")
                 {
-                    OracleCommand cmd_insert = new OracleCommand("InsertCategory", conn);
-                    cmd_insert.CommandType = CommandType.StoredProcedure;
-                    cmd_insert.Parameters.Add(new OracleParameter("vCategoryName", txtCategoryName.Text));
-                    cmd_insert.Parameters.Add(new OracleParameter("vDescription", rtbDescription.Text));
-                    cmd_insert.Parameters.Add(new OracleParameter("vCreateDate", DateTime.Now.ToString("dd-MMMM-yy")));
-                    cmd_insert.Parameters.Add(new OracleParameter("vCreateBy", UserLogin.getEmployeeName()));
+                    string insert_sql = "INSERT INTO tblCategories(CategoryName, Description, CreateDate, CreateBy) VALUES(:1, :2, :3, :4)";
+                    OracleCommand cmd_insert = new OracleCommand(insert_sql, conn);
+                    //cmd_insert.CommandType = CommandType.StoredProcedure;
+                    cmd_insert.Parameters.Add(new OracleParameter("1", txtCategoryName.Text));
+                    cmd_insert.Parameters.Add(new OracleParameter("2", rtbDescription.Text));
+                    cmd_insert.Parameters.Add(new OracleParameter("3", DateTime.Now.ToString("dd-MMMM-yy")));
+                    cmd_insert.Parameters.Add(new OracleParameter("4", UserLogin.getEmployeeName()));
 
-                    if (cmd_insert.ExecuteNonQuery() == -1)
+                    if (cmd_insert.ExecuteNonQuery() > 0)
                     {
                         btnAddNew.Text = "Add New";
                         btnUpdate.Enabled = true;
@@ -97,7 +102,6 @@ namespace SalesMGS
                     update_cmd.Parameters.Add("vDescription", rtbDescription.Text);
                     update_cmd.Parameters.Add("vUpdateDate", DateTime.Now.ToString("dd-MMMM-yy"));
                     update_cmd.Parameters.Add("vUpdateBy", UserLogin.getEmployeeName());
-                    
 
                     if (update_cmd.ExecuteNonQuery() == -1)
                     {
@@ -131,18 +135,25 @@ namespace SalesMGS
                 {
                     if (MessageBox.Show("Are you sure to delete, " + txtCategoryName.Text + "?", "DELETE", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        OracleCommand delete_cmd = new OracleCommand("DeleteCategory", conn);
-                        delete_cmd.CommandType = CommandType.StoredProcedure;
-                        delete_cmd.Parameters.Add("vCategoryID", Int32.Parse(txtCategoryID.Text));
+                        OracleCommand cmd_insert_user = new OracleCommand("InsertUser", conn);
+                        cmd_insert_user.CommandType = CommandType.StoredProcedure;
+                        cmd_insert_user.Parameters.Add("vName", UserLogin.getEmployeeName());
 
-                        if (delete_cmd.ExecuteNonQuery() == -1)
+                        if(cmd_insert_user.ExecuteNonQuery() == -1)
                         {
-                            MessageBox.Show("One record has deleted from Database!", "DELETED", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LoadData();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Fail to delete!", "FAIL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            OracleCommand delete_cmd = new OracleCommand("DeleteCategory", conn);
+                            delete_cmd.CommandType = CommandType.StoredProcedure;
+                            delete_cmd.Parameters.Add("vCategoryID", Int32.Parse(txtCategoryID.Text));
+
+                            if (delete_cmd.ExecuteNonQuery() == -1)
+                            {
+                                MessageBox.Show("One record has deleted from Database!", "DELETED", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                LoadData();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Fail to delete!", "FAIL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
