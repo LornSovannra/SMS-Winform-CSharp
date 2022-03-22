@@ -286,6 +286,10 @@ namespace SalesMGS
             pbProductImage.Image = Image.FromStream(ms);
         }
 
-        
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            ProductReportForm f = new ProductReportForm();
+            f.ShowDialog();
+        }
     }
 }

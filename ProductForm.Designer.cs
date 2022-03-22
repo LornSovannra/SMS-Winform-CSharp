@@ -60,6 +60,7 @@ namespace SalesMGS
             this.pbProductImage = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.btnReport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbProductImage)).BeginInit();
             this.SuspendLayout();
@@ -361,11 +362,22 @@ namespace SalesMGS
             this.label12.TabIndex = 32;
             this.label12.Text = "$";
             // 
+            // btnReport
+            // 
+            this.btnReport.Location = new System.Drawing.Point(1117, 163);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(91, 32);
+            this.btnReport.TabIndex = 33;
+            this.btnReport.Text = "Make Report";
+            this.btnReport.UseVisualStyleBackColor = true;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
+            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1224, 583);
+            this.Controls.Add(this.btnReport);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.dgvProduct);
@@ -440,5 +452,6 @@ namespace SalesMGS
         private System.Windows.Forms.OpenFileDialog ofdPhoto;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button btnReport;
     }
 }

@@ -71,6 +71,7 @@ namespace SalesMGS
             // 
             // btnShowReport
             // 
+            this.btnShowReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnShowReport.Location = new System.Drawing.Point(1099, 12);
             this.btnShowReport.Name = "btnShowReport";
             this.btnShowReport.Size = new System.Drawing.Size(113, 26);
